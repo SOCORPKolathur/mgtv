@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "mg-garments-e8325"
+  },
+  "targets": {
+    "mg-garments-e8325": {
+      "hosting": {
+        "app": [
+          "mgtv"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
