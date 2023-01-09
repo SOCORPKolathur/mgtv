@@ -10,11 +10,9 @@ class hmpage extends StatefulWidget {
 }
 
 class _hmpageState extends State<hmpage> {
-
   String _timeString='';
   String _timeString1='';
   ScrollController scrollController = ScrollController();
-
   @override
   void initState() {
     _timeString = _formatDateTime(DateTime.now());
@@ -43,133 +41,69 @@ class _hmpageState extends State<hmpage> {
 
     super.initState();
   }
-
-
   @override
   Widget build(context) {
-
+    double height = MediaQuery.of(context).size.height;
+    double  width = MediaQuery.of(context).size.width;
     return
       Scaffold(
         body:
         Padding(
-          padding:EdgeInsets.only(top:10,left: 90),
+          padding:EdgeInsets.only(top:height/93.9,left:width/42),
           child: Container(
-            width: 1200,
+            width: width/1.05,
             color: Colors.yellowAccent,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 10,),
+                SizedBox(height:height/93.9,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text( _timeString,style:TextStyle(
                       color: Colors.red,
-                      fontSize: 15,
+                      fontSize: width/80,
                       fontWeight: FontWeight.w700
                     ),),
                     Text( _timeString1,style:TextStyle(
                       color: Colors.red,
-                      fontSize: 15,
+                      fontSize: width/80,
                       fontWeight: FontWeight.w700
                     ),),
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height:height/93.9,),
                 Row(
                   children: [
-                    SizedBox(width: 10,),
+                    SizedBox(width: width/168.0,),
                     Container(
-                      height: 25,
-                      width: 60,
+                      height:height/18.78,
+                      width:width/3.23,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)
                       ),
-                      child: Center(child: Text('Si No')),
+                      child: Center(child: Text('Operator',style: TextStyle(fontWeight: FontWeight.bold,fontSize: width/84),)),
                     ),
                     Container(
-                      height: 25,
-                      width: 360,
+                      height:height/18.78,
+                      width:width/3.23,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)
                       ),
-                      child: Center(child: Text('Operator')),
+                      child: Center(child: Text('Operator Name',style: TextStyle(fontWeight: FontWeight.bold,fontSize: width/84),)),
                     ),
                     Container(
-                      height: 25,
-                      width: 70,
+                      height:height/18.78,
+                      width:width/3.23,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)
                       ),
-                      child: Center(child: Text('1')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('2')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('3')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('4')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('5')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('6')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('7')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('8')),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 150,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: Center(child: Text('Total')),
+                      child: Center(child: Text('Target',style: TextStyle(fontWeight: FontWeight.bold,fontSize: width/84),)),
                     ),
 
                   ],
                 ),
+
                 StreamBuilder<QuerySnapshot>(
               stream:FirebaseFirestore.instance
                   .collection('operator')
@@ -185,94 +119,30 @@ class _hmpageState extends State<hmpage> {
                   itemBuilder: (context, index) =>
                       Row(
                         children: [
-                          SizedBox(width: 10,),
+                          SizedBox(width: width/168.0,),
                           Container(
-                            height: 25,
-                            width: 60,
+                            height:height/30,
+                            width:width/3.23,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text(index.toString())),
+                            child: Center(child: Text(index.toString(),style: TextStyle(fontSize: width/120),)),
                           ),
                           Container(
-                            height: 25,
-                            width: 360,
+                            height:height/30,
+                            width:width/3.23,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text(snapshot.data!.docs[index]["name"])),
+                            child: Center(child: Text(snapshot.data!.docs[index]["name"],style: TextStyle(fontSize: width/120),)),
                           ),
                           Container(
-                            height: 25,
-                            width: 70,
+                            height:height/30,
+                            width:width/3.23,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text('1')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('2')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('3')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('4')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('5')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('6')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('7')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('8')),
-                          ),
-                          Container(
-                            height: 25,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(child: Text('Total')),
+                            child: Center(child: Text('Target',style: TextStyle(fontSize: width/120)),),
                           ),
 
                         ],
