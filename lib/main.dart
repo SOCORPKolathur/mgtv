@@ -13,8 +13,8 @@ Future<void> main() async {
           projectId: "mg-garments-e8325",
           storageBucket: "mg-garments-e8325.appspot.com",
           messagingSenderId: "160377336784",
-          appId: "1:160377336784:web:a2fd2dc3d54b2800c2bfd5",
-          measurementId: "G-WWWRSMNSYC"
+          appId: "1:160377336784:web:425ecc2aa45f6076c2bfd5",
+          measurementId: "G-NDLNVZN9XB"
       )
   );
 

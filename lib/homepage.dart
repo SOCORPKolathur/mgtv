@@ -13,6 +13,7 @@ class _hmpageState extends State<hmpage> {
   String _timeString='';
   String _timeString1='';
   ScrollController scrollController = ScrollController();
+  var numbers = List<int>.generate(10, (n) => 100);
   @override
   void initState() {
     _timeString = _formatDateTime(DateTime.now());
@@ -82,7 +83,7 @@ class _hmpageState extends State<hmpage> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)
                       ),
-                      child: Center(child: Text('Operator',style: TextStyle(fontWeight: FontWeight.bold,fontSize: width/84),)),
+                      child: Center(child: Text('Rank',style: TextStyle(fontWeight: FontWeight.bold,fontSize: width/84),)),
                     ),
                     Container(
                       height:height/18.78,
@@ -106,7 +107,7 @@ class _hmpageState extends State<hmpage> {
 
                 StreamBuilder<QuerySnapshot>(
               stream:FirebaseFirestore.instance
-                  .collection('operator')
+                  .collection('TV Details').doc("${DateTime.now().day}${DateTime.now().month}${DateTime.now().year}").collection("Today").orderBy("target",descending: true)
                   .snapshots(),
               builder: (context, snapshot) {
 
@@ -126,7 +127,7 @@ class _hmpageState extends State<hmpage> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text(index.toString(),style: TextStyle(fontSize: width/120),)),
+                            child: Center(child: Text((index+1).toString(),style: TextStyle(fontSize: width/120),)),
                           ),
                           Container(
                             height:height/30,
@@ -134,7 +135,7 @@ class _hmpageState extends State<hmpage> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text(snapshot.data!.docs[index]["name"],style: TextStyle(fontSize: width/120),)),
+                            child: Center(child: Text(snapshot.data!.docs[index]["opname"],style: TextStyle(fontSize: width/120),)),
                           ),
                           Container(
                             height:height/30,
@@ -142,11 +143,11 @@ class _hmpageState extends State<hmpage> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)
                             ),
-                            child: Center(child: Text('Target',style: TextStyle(fontSize: width/120)),),
+                            child: Center(child: Text(snapshot.data!.docs[index]["target"].toStringAsFixed(2),style: TextStyle(fontSize: width/120)),),
                           ),
 
                         ],
-                      ),
+                      )
                 ),
                     )
                     : Text('Loading...');
